@@ -1,7 +1,7 @@
+from saleapp import admin, db
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import BaseView, expose
-from banvemaybay import admin, db
-from banvemaybay.models import Category, Product
+from saleapp.models import Chitietlichchuyenbay, Hangkhach, Phieudatcho
 
 
 class ContactView(BaseView):
@@ -10,6 +10,8 @@ class ContactView(BaseView):
         return self.render('admin/contact.html')
 
 
-admin.add_view(ModelView(Category, db.session))
-admin.add_view(ModelView(Product, db.session))
+admin.add_view(ModelView(Chitietlichchuyenbay, db.session))
+admin.add_view(ModelView(Phieudatcho, db.session))
+admin.add_view(ModelView(Hangkhach, db.session))
 admin.add_view(ContactView(name='Liên hệ'))
+

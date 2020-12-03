@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, Float, \
     String, ForeignKey, Boolean, Date, Enum, Time
-from sqlalchemy.orm import relationship
 from saleapp import db
 from datetime import datetime
 from flask_login import UserMixin
@@ -10,15 +9,18 @@ from enum import Enum as UserEnum
 class SaleBase(db.Model):
     __abstract__ = True
 
-    MaSB = Column(Integer, primary_key=True, autoincrement=True)
-    TenSB = Column(String(50), nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(50), nullable=False)
 
     def __str__(self):
         return self.name
 
 
-class Sanbay(SaleBase):
+class Sanbay(db.Model):
     __tablename__ = 'Sân Bay'
+
+    MaSB = Column(Integer, primary_key=True, autoincrement=True)
+    TenSB = Column(String(50), nullable=False)
 
 
 class Vitrighe(db.Model):
@@ -41,7 +43,7 @@ class Lichchuyenbay(db.Model):
     __tablename__ = 'Lịch Chuyến Bay'
 
     MaCB = Column(Integer, primary_key=True, autoincrement=True)
-    MaSBden = Column(Integer, ForeignKey(SaleBase.MaSB), nullable=False)
+    MaSBden = Column(Integer, ForeignKey(Sanbay.MaSB), nullable=False)
     Ngaygio = Column(Date)
     TGbay = Column(Time)
     SLgheH1 = Column(Integer, nullable=True)

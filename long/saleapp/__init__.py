@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "^%@&^@*&!@67532623^@%^%@!"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/saledbv1?charset=utf8'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/bvmb?charset=utf8'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['ROOT_PROJECT_PATH'] = app.root_path
 
